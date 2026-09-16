@@ -14,17 +14,28 @@ const honapok = [
     { nev: "December", evszak: "Tél", napok: 31 }
 ];
 
-function inditas(){
-    try {
-    let eredmeny = Number(document.getElementById("honapInput").value)-1;
-   console.log(`Hónap: ${honapok[eredmeny].nev} | Évszak: ${honapok[eredmeny].evszak} | Napok száma: ${honapok[eredmeny].napok}`);
+function honapInfo(honapSzam) {
 
-    } catch (hiba) {
-      result.innerHTML = "Hiba történt: Hibás adatot adtál meg";
-      
-    return null;
-  }
-    
-                       
+    return honapok[honapSzam-1];
 }
 
+function inditas(){
+try{
+    let eredmeny = Number(document.getElementById("honapInput").value);
+    
+    if (isNaN(eredmeny)) {
+        
+        throw new Error("Nem számot adtál meg");
+    }
+    else if (eredmeny<1 || eredmeny>12) {
+
+        throw new Error("Érvénytelen hónap");
+    }
+    let honapID=honapInfo(eredmeny);
+    console.log(`Hónap: ${honapID.nev} | Évszak: ${honapID.evszak} | Napok száma: ${honapID.napok}`);
+
+    }
+catch (error) {
+    console.log("Hiba történt: " + error.message);
+}
+}
