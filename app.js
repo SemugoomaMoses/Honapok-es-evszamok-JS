@@ -19,6 +19,20 @@ function honapInfo(honapSzam) {
     return honapok[honapSzam-1];
 }
 
+function modositas(){
+    let eredmeny = Number(document.getElementById("honapInput").value);
+    if (eredmeny < 1 || eredmeny > 12) {
+        result.textContent = "Hibás adat! Adj meg egy 1 és 12 közötti hónapszámot!";
+        return;
+    }
+    else if (isNaN(eredmeny)) {
+        result.textContent = "Hibás adat! Nem szám!";
+        return;
+    }
+
+    let honapID = honapInfo(eredmeny);
+    result.textContent = (`Hónap: ${honapID.nev} | Évszak: ${honapID.evszak} | Napok száma: ${honapID.napok} | Ünnepek: ${honapID.ünnep.join(", ")}`);
+}
 
 function inditas(){
 try{
@@ -26,10 +40,10 @@ try{
     
     while (isNaN(eredmeny) || eredmeny < 1 || eredmeny > 12) {
         if (isNaN(eredmeny)) {
-            result.textContent = "Hibás adat! Nem szám!";
+            throw new Error("Hibás adat! Nem szám!");
         } 
         else if (eredmeny < 1 || eredmeny > 12) {
-            result.textContent = "Hibás adat! Adj meg egy 1 és 12 közötti hónapszámot!";
+            throw new Error("Hibás adat! Adj meg egy 1 és 12 közötti hónapszámot!");
         }
 
         document.getElementById("honapInput").value = "";
