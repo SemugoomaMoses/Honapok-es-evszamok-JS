@@ -7,10 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <label id="honapLabel" for="honapInput"> Adj meg egy hónapszámot 1-12-ig!</label>
+    <div id="tartalom">
+      <label id="honapLabel" for="honapInput"> Adj meg egy hónapszámot 1-12-ig!</label>
     <input type="text" id="honapInput">
-    <button onclick="inditas()" id="inditas" >Mehet</button>
-    <button onclick="modosit()" id="mosodistas" >Módosítás</button>
+    <div id="gombok">
+       <button onclick="inditas()" id="inditas" >Mehet</button>
+        <button onclick="modosit()" id="mosodistas" >Módosítás</button> 
+    </div>  
+    </div>
+    
+    
     <p id="result"></p>
     <script src="app.js"></script>
 </body>
